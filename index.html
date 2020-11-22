@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<p>Given 2 array, write a function with return value is an array that each element is divisor of all of the value of second array
+, also is multiples of all of the element of first array</p>
+<script>
+    function getTotalX(a, b) {
+        let arrDivisor = [];
+
+        /*find min of b array*/
+        function minArray(arr)
+        {
+            let min = arr[0];
+            for (let i = 0; i < arr.length; i++) {
+                if (min > arr[i]) min = arr[i];
+            }
+            return min;
+        }
+        let minOfB = minArray(b);
+        console.log(minOfB);
+        /* find common divisor array of b array and check */
+        /* if that value is multiples of all element of a array, push it to arrDivisor array */
+        for (let i = 1; i <= minOfB; i++)
+        {
+            if (function ()
+            {
+                for (let j = 0; j < b.length; j++)
+                {
+                    if (b[j] % i != 0) return false;
+                }
+                return true;
+            })
+            {
+                console.log(i);
+                if (function ()
+                {
+                    for (let k = 0; k < a.length; k++) {
+                        if (i % k != 0) return false;
+                    }
+                    return true;
+                }) {
+                    arrDivisor.push(i);
+                }
+            }
+        }
+        return arrDivisor;
+    }
+    let a=[1,2,3];
+    let b=[18,36,54];
+    console.log(getTotalX(a,b));
+</script>
+</body>
+</html>
